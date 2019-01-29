@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by mkuriti-W520 (AT&T Wireless Services) -->
+<xs:schema targetNamespace="http://esmd.ois.cms.hhs.gov/rc/adrreviewresponse" xmlns:tns="http://esmd.ois.cms.hhs.gov/rc/adrreviewresponse" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xs:element name="ADRReviewResponse">
+		<xs:annotation>
+			<xs:documentation>New version 1.1 for cr_133</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="letterID" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="([a-zA-Z0-9]{10,25})"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="senderOID">
+					<xs:annotation>
+						<xs:documentation>Sender Information.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="64"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="hihOID">
+					<xs:annotation>
+						<xs:documentation>HIH Information.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="64"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="providerNPI">
+					<xs:simpleType>
+						<xs:restriction base="xs:long">
+							<xs:minInclusive value="1"/>
+							<xs:maxInclusive value="9999999999"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="caseLevelInfo" type="tns:CaseLevelInfoType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CaseLevelInfoType">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseDecisionInfoType">
+				<xs:sequence>
+					<xs:element name="caseID" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1"/>
+								<xs:maxLength value="14"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="claimLevelInfo" type="tns:ClaimLevelInfoType" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ClaimLevelInfoType">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseDecisionInfoType">
+				<xs:sequence>
+					<xs:element name="claimID" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:pattern value="[0-9]{13}"/>
+								<xs:pattern value="[0-9]{14}"/>
+								<xs:pattern value="[0-9]{15}"/>
+								<xs:pattern value="[a-zA-Z0-9\s\-]{17,23}"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="claimLineItemInfo" type="tns:ClaimLineItemInfoType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ClaimLineItemInfoType">
+		<xs:complexContent>
+			<xs:extension base="tns:BaseDecisionInfoType">
+				<xs:sequence>
+					<xs:element name="serviceID">
+						<xs:annotation>
+							<xs:documentation>HICPIC ID</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:pattern value="([a-zA-Z0-9]{1,5})"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BaseDecisionInfoType">
+		<xs:sequence>
+			<xs:element name="providerNPI" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:long">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="9999999999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="decisionEntryDate" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Date (yyyymmdd) and Time (hhmmss)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="14"/>
+						<xs:minLength value="14"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="decisionIndicator" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1"/>
+						<xs:minLength value="1"/>
+						<xs:enumeration value="A"/>
+						<xs:enumeration value="N"/>
+						<xs:enumeration value="R"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="reasonCodeList" type="tns:ReasonCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Reason Code(s) provided for Non-Affirmed and Modified Decision for a Review Decision Response to PA Request.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReasonCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				Reason Code provided for Non-Affirmed and Rejected Decision for the PA Review response
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="reasonCode" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Reason Code is required when the decision is Non Affirmed or Denied</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="5"/>
+						<xs:maxLength value="5"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

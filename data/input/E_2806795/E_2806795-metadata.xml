@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:RetrieveMedicalDocumentationResponse xmlns:ns0="http://esmd.ois.cms.hhs.gov/v1/rc" returnCode="1" serviceSuccessful="true">
+    <statusDescription>The RetrieveMedicalDocumentationRequest processed successfully.</statusDescription>
+    <NumberOfDocuments>4</NumberOfDocuments>
+    <ESMDPackage>
+        <ESMDTransaction TransactionId="2806795" DeliveryType="E"/>
+        <SendingOID>urn:oid:2.16.840.1.113883.3.6037.2</SendingOID>
+        <TargetOID>urn:oid:2.16.840.1.113883.3.6037.2.47</TargetOID>
+        <CompleteSubmission>true</CompleteSubmission>
+        <RequestType>XDR</RequestType>
+        <SubmissionMetadata>
+            <BusinessType>ADR Responses</BusinessType>
+            <CreationTime>2018-09-27T14:04:40.253-04:00</CreationTime>
+            <SubmissionTime>2018-09-27T14:04:40.253-04:00</SubmissionTime>
+            <EFTSubmissionTime>2018-09-27T14:04:40.253-04:00</EFTSubmissionTime>
+            <ContentTypeCode>1</ContentTypeCode>
+            <NPI>1234567891</NPI>
+            <ClaimId>Claim5678901234568</ClaimId>
+            <CaseId>6000045</CaseId>
+        </SubmissionMetadata>
+        <Documentation DocumentUniqueIdentifier="E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071477241_0" MimeType="application/pdf" FileName="E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071477241_0.pdf">
+            <OptionalMetadata>
+                <FieldName>FileName</FieldName>
+                <FieldValue>E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071477241_0.pdf</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>Description</FieldName>
+                <FieldValue>From esMD</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>CheckSum</FieldName>
+                <FieldValue>1999f39a2125fe4740cf384f8df9f7d871cbcbb9</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>ParentUniqueId</FieldName>
+                <FieldValue>_cab0b2fa-c27f-11e8-93e7-02dfa97cd986</FieldValue>
+            </OptionalMetadata>
+        </Documentation>
+        <Documentation DocumentUniqueIdentifier="E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071478253_1" MimeType="application/pdf" FileName="E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071478253_1.pdf">
+            <OptionalMetadata>
+                <FieldName>FileName</FieldName>
+                <FieldValue>E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071478253_1.pdf</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>Description</FieldName>
+                <FieldValue>From esMD</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>CheckSum</FieldName>
+                <FieldValue>bf7bb96f27e80e80bd613f8e70b24ef77ca8bc79</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>ParentUniqueId</FieldName>
+                <FieldValue>_cab0b2fa-c27f-11e8-93e7-02dfa97cd986</FieldValue>
+            </OptionalMetadata>
+        </Documentation>
+        <Documentation DocumentUniqueIdentifier="E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071478453_2" MimeType="application/pdf" FileName="E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071478453_2.pdf">
+            <OptionalMetadata>
+                <FieldName>FileName</FieldName>
+                <FieldValue>E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071478453_2.pdf</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>Description</FieldName>
+                <FieldValue>From esMD</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>CheckSum</FieldName>
+                <FieldValue>700831075b5165a43a26ec25e024ef7dacec7d8c</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>ParentUniqueId</FieldName>
+                <FieldValue>_cab0b2fa-c27f-11e8-93e7-02dfa97cd986</FieldValue>
+            </OptionalMetadata>
+        </Documentation>
+        <Documentation DocumentUniqueIdentifier="E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071480146_3" MimeType="application/pdf" FileName="E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071480146_3.pdf">
+            <OptionalMetadata>
+                <FieldName>FileName</FieldName>
+                <FieldValue>E_2806795-cab0b2fa-c27f-11e8-93e7-02dfa97cd9861538071480146_3.pdf</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>Description</FieldName>
+                <FieldValue>From esMD</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>CheckSum</FieldName>
+                <FieldValue>1589fd0c009b8aa9decb275862cb41dab628ceeb</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>ParentUniqueId</FieldName>
+                <FieldValue>_cab0b2fa-c27f-11e8-93e7-02dfa97cd986</FieldValue>
+            </OptionalMetadata>
+        </Documentation>
+    </ESMDPackage>
+</ns0:RetrieveMedicalDocumentationResponse>

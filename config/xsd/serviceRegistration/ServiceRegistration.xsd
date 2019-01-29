@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.cms.gov/esMD/schemas/ServiceRegistration"
+	 targetNamespace="http://www.cms.gov/esMD/schemas/ServiceRegistration"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="SERVICE_REGISTRATION">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ServiceRegistrationRequest" minOccurs="0"/>
+				<xs:element ref="ServiceRegistrationResponse" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="addrInfoType">
+		<xs:sequence>
+			<xs:element name="addrLine1" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="55"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="addrLine2" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="55"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="city" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="state" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="zipCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceRegistrationRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="actionRequested" type="actionType"/>
+				<xs:element name="requestDate" type="xs:date"/>
+				<xs:element name="SenderInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Sender" type="SenderType"/>
+							<xs:element name="HIHOwner" type="HIHOwnerType" minOccurs="0"/>
+							<xs:element name="HIHContact" type="HIHContactType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RCInfo" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RC_OID">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ProviderInfo" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="ProviderInfoType">
+											<xs:sequence>
+												<xs:element name="ServiceInfo" type="ServiceInfoType" minOccurs="0" maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ServiceRegistrationResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="esMDTransactionID">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="15"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="actionRequested" type="actionType"/>
+				<xs:element name="decisionDate" type="xs:date"/>
+				<xs:element name="ErrorDetails" type="errorDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Sender">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="SenderType">
+								<xs:sequence>
+									<xs:element name="HIHEnrollment" type="enrollmentResultType" minOccurs="0"/>
+									<xs:element name="ErrorDetails" type="errorDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RCInfo" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RC_OID">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ProviderInfo" minOccurs="0">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="ProviderInfoType">
+											<xs:sequence>
+												<xs:element name="ProviderEnrollment" type="enrollmentResultType" minOccurs="0"/>
+												<xs:element name="ServiceInfo" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:complexContent>
+															<xs:extension base="ServiceInfoType">
+																<xs:sequence>
+																	<xs:element name="ServiceEnrollment" type="enrollmentResultType" minOccurs="0"/>
+																	<xs:element name="ErrorDetails" type="errorDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+																</xs:sequence>
+															</xs:extension>
+														</xs:complexContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="ErrorDetails" type="errorDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ErrorDetails" type="errorDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SenderType">
+		<xs:sequence>
+			<xs:element name="HIH_OID">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="HIHName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="startDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="endDate" type="xs:date" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HIHOwnerType">
+		<xs:sequence>
+			<xs:element name="type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>P - "Person" or  O - "Organization"</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="P"/>
+						<xs:enumeration value="O"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="orgName" type="xs:string" minOccurs="0"/>
+				<xs:element name="name" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="firstName" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="35"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="middleName" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="25"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="lastName" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="60"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HIHContactType">
+		<xs:sequence>
+			<xs:element name="firstName">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="35"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="middleName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="lastName">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="HIHContactPhone">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="HIHContactFax" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="HIHContactEmail">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="addrInfo" type="addrInfoType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceInfoType">
+		<xs:sequence>
+			<xs:element name="serviceCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="16"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="startDate" type="xs:date" minOccurs="0" />
+			<xs:element name="endDate" type="xs:date" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProviderInfoType">
+		<xs:sequence>
+			<xs:element name="providerName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="providerNPI" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="providerPTAN" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="addrInfo" type="addrInfoType" minOccurs="0"/>
+			<xs:element name="providerTaxID" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="9"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="providerNumber" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="providerEmail" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="errorDetailsType">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="enrollmentResultType">
+		<xs:annotation>
+			<xs:documentation>Added -- A, Updated -- U, Removed -- R OR Failed -- F</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="U"/>
+			<xs:enumeration value="R"/>
+			<xs:enumeration value="F"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="actionType">
+		<xs:annotation>
+			<xs:documentation>N -- New Request for HIH to register
+C -- Change HIH details
+D -- Delete HIH
+A -- Add new provider OR new service
+R -- Remove provider OR remove service</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="D"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="R"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

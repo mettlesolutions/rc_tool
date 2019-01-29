@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:RetrieveMedicalDocumentationResponse xmlns:ns0="http://esmd.ois.cms.hhs.gov/v1/rc" returnCode="1" serviceSuccessful="true">
+    <statusDescription>The RetrieveMedicalDocumentationRequest processed successfully.</statusDescription>
+    <NumberOfDocuments>1</NumberOfDocuments>
+    <ESMDPackage>
+        <ESMDTransaction TransactionId="2806791" DeliveryType="E"/>
+        <SendingOID>urn:oid:2.16.840.1.113883.3.6037.2</SendingOID>
+        <TargetOID>urn:oid:2.16.840.1.113883.3.6037.2.47</TargetOID>
+        <CompleteSubmission>true</CompleteSubmission>
+        <RequestType>XDR</RequestType>
+        <SubmissionMetadata>
+            <BusinessType>ADR Responses</BusinessType>
+            <CreationTime>2018-09-27T13:14:53.103-04:00</CreationTime>
+            <SubmissionTime>2018-09-27T13:14:53.103-04:00</SubmissionTime>
+            <EFTSubmissionTime>2018-09-27T13:14:53.103-04:00</EFTSubmissionTime>
+            <ContentTypeCode>1</ContentTypeCode>
+            <NPI>2142266698</NPI>
+            <ClaimId>69777777</ClaimId>
+            <CaseId>6000045</CaseId>
+        </SubmissionMetadata>
+        <Documentation DocumentUniqueIdentifier="E_2806791-d9a631ba-c278-11e8-8eda-02dfa97cd9861538068492975_0" MimeType="application/pdf" FileName="E_2806791-d9a631ba-c278-11e8-8eda-02dfa97cd9861538068492975_0.pdf">
+            <OptionalMetadata>
+                <FieldName>FileName</FieldName>
+                <FieldValue>E_2806791-d9a631ba-c278-11e8-8eda-02dfa97cd9861538068492975_0.pdf</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>Description</FieldName>
+                <FieldValue>From esMD</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>CheckSum</FieldName>
+                <FieldValue>1999f39a2125fe4740cf384f8df9f7d871cbcbb9</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>ParentUniqueId</FieldName>
+                <FieldValue>_d9a631ba-c278-11e8-8eda-02dfa97cd986</FieldValue>
+            </OptionalMetadata>
+            <OptionalMetadata>
+                <FieldName>SplitNumber</FieldName>
+                <FieldValue>1-3</FieldValue>
+            </OptionalMetadata>
+        </Documentation>
+    </ESMDPackage>
+</ns0:RetrieveMedicalDocumentationResponse>

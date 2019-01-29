@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RCClientBusinessConfig xmlns="http://esmd.ois.cms.hhs.gov/rc/businessconfig">
+    <RCDetails>
+        <!-- Update: The RC Type. Example : ZPIC , A-B MAC -->
+        <rcType>A-B MAC</rcType>
+    </RCDetails>
+    <EMDRConfig>
+        <contentTypeCode>1.1</contentTypeCode>
+    </EMDRConfig>
+    <ADRReviewResponseConfig>
+        <contentTypeCode>1.2</contentTypeCode>
+    </ADRReviewResponseConfig>
+    <ADRReviewResultsConfig>
+        <contentTypeCode>1.3</contentTypeCode>
+    </ADRReviewResultsConfig>
+	<PAPCRDecisionLetterConfig>
+    <contentTypeCode>1.4</contentTypeCode>
+  </PAPCRDecisionLetterConfig>
+</RCClientBusinessConfig>

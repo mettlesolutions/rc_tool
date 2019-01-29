@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:ICDTCommunication xmlns:ns0="http://cms.hhs.gov/esmd/icdt">
+    <ns0:ICDTNotification RequestType="SOLIC_REQ_ACK" id="1">
+        <ns0:ICDTMetaData>
+            <ns0:receiverOID>urn:oid:2.16.840.1.113883.13.34.110.1.999.1</ns0:receiverOID>
+            <ns0:receiverID>01232</ns0:receiverID>
+            <ns0:senderOID>urn:oid:2.16.840.1.113883.13.34.110.1.999.4</ns0:senderOID>
+            <ns0:senderID>01231</ns0:senderID>
+            <ns0:requestID>QWLLGVP6ESD0010107170715432</ns0:requestID>
+            <ns0:contentType>15.1</ns0:contentType>
+        </ns0:ICDTMetaData>
+        <ns0:creationTime>2018-03-12T14:01:00.087-04:00</ns0:creationTime>
+        <ns0:fileName>D#EFT.ON.ESMD2.QWLLGVP6.ESD001.D010717.T0715432</ns0:fileName>
+        <ns0:Status>
+            <ns0:serviceSuccessful>true</ns0:serviceSuccessful>
+        </ns0:Status>
+    </ns0:ICDTNotification>
+</ns0:ICDTCommunication>

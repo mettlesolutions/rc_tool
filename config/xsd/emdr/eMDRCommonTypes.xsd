@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://esmd.ois.cms.hhs.gov/rc/eMDRCommonTypes" elementFormDefault="qualified">
+
+    <xs:complexType name="Name">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Name</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="firstName" minOccurs="0" maxOccurs="1" nillable="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        First Name.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="35"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="middleName" minOccurs="0" maxOccurs="1" nillable="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        Middle Name.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="25"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="lastName" minOccurs="1" maxOccurs="1" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>
+                        last Name.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="60"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Address">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Address</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="address1" minOccurs="1" maxOccurs="1" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>
+                        Address 1
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="55"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="address2" minOccurs="0" maxOccurs="1" nillable="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        Address2.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="55"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="city" minOccurs="1" maxOccurs="1" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>
+                        City.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="30"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="state" minOccurs="1" maxOccurs="1" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>
+                        State.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="zipCode" minOccurs="1" maxOccurs="1" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>
+                        Zip Code.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="9"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Telephone">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Telephone</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="telephoneNumber" minOccurs="1" maxOccurs="1" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>
+                        Telephone Number.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="10"/>
+                        <xs:maxLength value="15"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="telephoneNumExt"  minOccurs="0" maxOccurs="1" nillable="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        Telephone Number Extension
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="10"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="AttachmentInfo">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Attachment Details</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="numberOfAttachments" nillable="true" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Number of Attachments.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="attachmentName" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Attachment or Supplementary Information
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="300"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="dateType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}"/>
+            <xs:length value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="dateorDateRangeType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="10"/>
+            <xs:maxLength value="21"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="EmailType" >
+        <!-- <xs:restriction base="xs:token">  -->
+            <!--<xs:pattern value="([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(([a-zA-Z0-9_-])*\.([a-zA-Z0-9_-])+)+"/>-->
+            <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                <xs:maxLength value="50"/>
+            </xs:restriction>
+        <!--</xs:restriction>  -->
+    </xs:simpleType>
+
+</xs:schema>

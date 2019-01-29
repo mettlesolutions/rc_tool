@@ -1,0 +1,9 @@
+2019-01-27 16:39:56,723 - [main] - INFO - 
+2019-01-27 16:39:56,724 - [main] - INFO - Reading XML File: C:\Users\sivaabhishek\eclipse-workspace\RCClient\config\esmd-rc-client-config.xml
+2019-01-27 16:39:56,759 - [main] - INFO - TAKING A BACKUP OF THE ORIGINAL FILE AS: C:\Users\sivaabhishek\eclipse-workspace\RCClient\config\esmd-rc-client-config.xml.BKP
+2019-01-27 16:39:56,769 - [main] - INFO - Creating ESMDConfig Object from XML
+2019-01-27 16:39:57,258 - [main] - INFO - Encrypting the Keystore password
+2019-01-27 16:39:57,764 - [main] - INFO - Encrypting the Private Key password
+2019-01-27 16:39:57,765 - [main] - INFO - Marshalling the ESMDObject back to XML
+2019-01-27 16:39:57,784 - [main] - INFO - Writing the XML to a file: C:\Users\sivaabhishek\eclipse-workspace\RCClient\config\esmd-rc-client-config.xml
+2019-01-27 16:39:57,795 - [main] - INFO - 

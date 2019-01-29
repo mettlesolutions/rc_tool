@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://esmd.ois.cms.hhs.gov/rc/esMDProcessMetadata"
+    targetNamespace="http://esmd.ois.cms.hhs.gov/rc/esMDProcessMetadata" elementFormDefault="qualified"> 
+
+    <!--
+        Initial Version : esMD AR2017.01.0 Release. - esMD Process Metadata Schema.
+    -->
+    
+    <xs:element name="esMDProcessMetadata">
+        <xs:complexType>
+            <xs:annotation>
+                <xs:documentation xml:lang="en"> Description </xs:documentation>
+            </xs:annotation>
+           
+            <xs:sequence>
+
+                <xs:element name="uniqueID" minOccurs="1" maxOccurs="1" nillable="false">
+                    <xs:annotation>
+                        <xs:documentation> Unique ID: Should be generates by RC Client. </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="64"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <xs:element name="numberOfDocuments" minOccurs="1" maxOccurs="1" nillable="false">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Total number of documents.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="2"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+
+                <xs:element name="hihOID" minOccurs="1" maxOccurs="1" nillable="false">
+                    <xs:annotation>
+                        <xs:documentation>
+                            HIH Information: Read from request metadata xml.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="64"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+				
+				<xs:element name="senderOID" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            RC Information(OID): Read from request metadata xml.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="1"/>
+                            <xs:maxLength value="64"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                
+                <xs:element name="senderName" type="tns:Name" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            sender Name: Read from request metadata xml.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="RCType" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>RC type represents the type of Review Contractor from which the request are sent to esMD. 
+                            Example : A-B Mac, ZPIC, ...etc.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                
+                <xs:element name="submissionMetadata" type="tns:SubmissionType" maxOccurs="1" minOccurs="1" nillable="false">
+                    <xs:annotation>
+                        <xs:documentation>
+                            This object type represents the business relevant metadata associated with the esMD Transaction.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="Documentation" type="tns:DocumentationType" minOccurs="1" maxOccurs="unbounded" nillable="false"/>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="SubmissionType">
+
+        <xs:sequence>
+
+            <xs:element name="creationTime" type="xs:dateTime" minOccurs="1" maxOccurs="1" >
+                <xs:annotation>
+                    <xs:documentation>Represents the time when the document or other action was created.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <xs:element name="routingName" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation> RC Routing Name.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="35"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            
+            <xs:element name="deliveryType" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        In future versions of eMDR, the Delivery Type will become an important aspect in a
+                        similar fashion as the ContentTypeCode.  Presently, Medicare Contractors should assume
+                        that there are two types possible - 'E' for a esMD transaction, and 'T' for test transaction.
+                        Using a default value of '*' will return all the given transactions regardless of Delivery type.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="contentTypeCode" maxOccurs="1" minOccurs="1" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>contentTypeCode.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="5"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="letterID" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Letter ID.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([a-zA-Z0-9]{10,25})"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            
+            <xs:element name="letterDate" type="tns:dateType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Letter Date: read from request metadata xml.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <xs:element name="caseID" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Case ID: Read from request metadata xml.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="0"/>
+                        <xs:maxLength value="14"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="npi" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        NPI.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:long">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="9999999999"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="DocumentationType">
+        <xs:sequence>
+            <xs:element name="DocumentBinary" type="xs:base64Binary" maxOccurs="1" minOccurs="0" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>
+                        The document binary if required.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OptionalMetadata" type="tns:OptionalDataField" minOccurs="1" maxOccurs="30">
+                <xs:annotation>
+                    <xs:documentation>
+                        This structure allows the ability to specify additional metadata about a document.
+                        Size of the document and checksum value.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="DocumentUniqueIdentifier" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The unique ID for a given document.
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="MimeType" >
+            <xs:annotation>
+                <xs:documentation>
+                    The mime type of the document object
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="FileName">
+            <xs:annotation>
+                <xs:documentation>
+                    The name of the attachment if provided.
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="1"/>
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="OptionalDataField">
+        <xs:sequence>
+            <xs:element name="FieldName" maxOccurs="1" minOccurs="1">
+                <xs:annotation><xs:documentation>The name of a field restricted to 32 characters.</xs:documentation></xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="32"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="FieldValue" maxOccurs="1" minOccurs="1">
+                <xs:annotation><xs:documentation>The value of a field restricted to 64 characters.</xs:documentation></xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="255"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Name">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Name</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="firstName" minOccurs="0" maxOccurs="1" nillable="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        First Name.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="35"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="middleName" minOccurs="0" maxOccurs="1" nillable="true">
+                <xs:annotation>
+                    <xs:documentation>
+                        Middle Name.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="25"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="lastName" minOccurs="1" maxOccurs="1" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>
+                        last Name.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="60"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="dateType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{2}[/]\d{2}[/]\d{4}"/>
+            <xs:length value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://esmd.ois.cms.hhs.gov/v1/rc/config"  elementFormDefault="unqualified" attributeFormDefault="unqualified"
+           xmlns:tns="http://esmd.ois.cms.hhs.gov/v1/rc/config" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!--
+        update: esMD Release 4.0 Changes. Date: 01/28/2015
+     -->
+    <xs:element name="ESMDConfig">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ESMDSFTPServer" type="tns:SftpDetails" nillable="true" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="KeyStoreInfo" nillable="false" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="keyStoreLocation" type="xs:string" />
+                            <xs:element name="encKeyInfo" type="xs:string" />
+                            <xs:element name="encKeyInfoExt" type="xs:string" />
+                            <xs:element name="certAlias" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="InboundConfig" nillable="false" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="enabled" type="xs:boolean" />
+                            <xs:element name="checkFrequency" type="xs:int" />
+                            <xs:element name="rcHomeDirectory" type="xs:string"/>
+                            <xs:element name="targetDirectory" type="xs:string" />
+                            <xs:element name="inputDirectory" type="xs:string" />
+                            <xs:element name="tempDirectory" type="xs:string" />
+                            <xs:element name="errorDirectory" type="xs:string" />
+                            <xs:element name="configDirectory" type="xs:string" />
+                            <xs:element name="acknowledgmentsDirectory" type="xs:string" />
+                            <xs:element name="notificationsDirectory" type="xs:string" />
+                            <xs:element name="processingErrorDirectory" type="xs:string" />
+                            <xs:element name="remoteInboundDir" type="xs:string" />
+                            <xs:element name="inboundRoutingId" type="xs:string" />
+							<xs:element name="ICDTDirectoryStructure" type="tns:ICDTDirectoryStructure" nillable="true"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="OutboundConfig" nillable="false" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="enabled" type="xs:boolean" />
+                            <xs:element name="pushFrequency" type="xs:int" />
+                            <xs:element name="tempDirectory" type="xs:string" />
+                            <xs:element name="outputDirectory" type="xs:string" />
+                            <xs:element name="remoteOutboundDir" type="xs:string" />
+                            <xs:element name="outboundRoutingId" type="xs:string" />
+                            <xs:element name="outboundFilePrefix" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RCPickupNotification">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ESMDTransactionId" nillable="true" type="xs:long" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="RoutingId" minOccurs="0" type="xs:string" />
+                <xs:element name="PickupTime" type="xs:dateTime" nillable="false">
+                    <xs:annotation>
+                        <xs:documentation>Point in time when the Submission was pickedup by Review contractor.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="SubmissionTime" type="xs:dateTime" nillable="true">
+                    <xs:annotation>
+                        <xs:documentation>Point in time when the Submission was submitted to the esMD Gateway system.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ErrorInfo" type="tns:ErrorInfo" minOccurs="0"/>
+		        <xs:element name="fileName" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="64"/>
+						</xs:restriction>
+		          </xs:simpleType>
+		         </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RCPickupNotificationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ESMDTransactionId" nillable="true" type="xs:long" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="ErrorInfo" type="tns:ErrorInfo" nillable="true"/>
+                <xs:element name="Status" type="xs:string" nillable="true"/>
+                <xs:element name="StatusDesc" type="xs:string" nillable="true"/>
+                <xs:element name="fileName" minOccurs="0">
+				<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="64"/>
+						</xs:restriction>
+				</xs:simpleType>
+		        </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="ErrorInfo" >
+        <xs:sequence>
+            <xs:element name="ErrorCode" minOccurs="0" type="xs:int"  />
+            <xs:element name="ErrorName" minOccurs="0" type="xs:string" />
+            <xs:element name="ErrorDescription" minOccurs="0" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+	<xs:complexType name="ICDTDirectoryStructure" >
+        <xs:sequence>
+            <xs:element name="inputDirectory" type="xs:string"  />
+            <xs:element name="errorDirectory" type="xs:string" />
+            <xs:element name="notificationsDirectory" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SftpDetails">
+        <xs:sequence>
+            <xs:element name="host" type="xs:string" />
+            <xs:element name="port" type="xs:int" />
+            <xs:element name="environmentId" type="xs:string" />
+            <xs:element name="eftFilePrefix" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

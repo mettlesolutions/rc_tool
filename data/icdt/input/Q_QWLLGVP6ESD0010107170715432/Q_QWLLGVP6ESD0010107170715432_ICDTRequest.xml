@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ICDTRequest xmlns="http://cms.hhs.gov/esmd/icdt">
+    <receiverOID>urn:oid:2.16.840.1.113883.13.34.110.1.999.1</receiverOID>
+    <receiverID>01232</receiverID>
+    <senderOID>urn:oid:2.16.840.1.113883.13.34.110.1.999.4</senderOID>
+    <senderID>01231</senderID>
+    <requestID>QWLLGVP6ESD0010107170715432</requestID>
+    <contentType>15.1</contentType>
+    <TransactionType transType="Claim">
+        <OptionalMetadata>
+            <FieldName>CLAIM_ID</FieldName>
+            <FieldValue>23456789</FieldValue>
+        </OptionalMetadata>
+        <OptionalMetadata>
+            <FieldName>CASE_ID</FieldName>
+            <FieldValue>CASE ID 12345678910</FieldValue>
+        </OptionalMetadata>
+        <OptionalMetadata>
+            <FieldName>NPI</FieldName>
+            <FieldValue>1234567890</FieldValue>
+        </OptionalMetadata>
+        <OptionalMetadata>
+            <FieldName>HICN</FieldName>
+            <FieldValue>HICN12345678</FieldValue>
+        </OptionalMetadata>
+    </TransactionType>
+</ICDTRequest>
