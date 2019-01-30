@@ -7,7 +7,7 @@
         <eftFilePrefix>#EFT</eftFilePrefix>
     </ESMDSFTPServer>
     <KeyStoreInfo>
-        <keyStoreLocation>/home/ubuntu/config/rioc_gtwy_str</keyStoreLocation>
+        <keyStoreLocation>C:\Users\sivaabhishek\eclipse-workspace\RCC\config\rioc_gtwy_str</keyStoreLocation>
         <encKeyInfo>TYUnjVHDOBo=</encKeyInfo>
         <encKeyInfoExt>8+gsyRDQgFU=</encKeyInfoExt>
         <certAlias>riocrc</certAlias>
@@ -15,28 +15,28 @@
     <InboundConfig>
         <enabled>true</enabled>
         <checkFrequency>1</checkFrequency>
-        <rcHomeDirectory>/home/ubuntu/</rcHomeDirectory>
-        <targetDirectory>/home/ubuntu/data/download</targetDirectory>
-        <inputDirectory>/home/ubuntu/data/input</inputDirectory>
-        <tempDirectory>/home/ubuntu/data/temp</tempDirectory>
-        <errorDirectory>/home/ubuntu/data/error</errorDirectory>
-        <configDirectory>/home/ubuntu/</configDirectory>
-        <acknowledgmentsDirectory>/home/ubuntu/data/acknowledgment</acknowledgmentsDirectory>
-        <notificationsDirectory>/home/ubuntu/data/notification</notificationsDirectory>
-        <processingErrorDirectory>/home/ubuntu/data/processingError</processingErrorDirectory>
+        <rcHomeDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\</rcHomeDirectory>
+        <targetDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\download</targetDirectory>
+        <inputDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\input</inputDirectory>
+        <tempDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\temp</tempDirectory>
+        <errorDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\error</errorDirectory>
+        <configDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\</configDirectory>
+        <acknowledgmentsDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\acknowledgment</acknowledgmentsDirectory>
+        <notificationsDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\notification</notificationsDirectory>
+        <processingErrorDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\processingError</processingErrorDirectory>
         <remoteInboundDir>/ES0047</remoteInboundDir>
         <inboundRoutingId>ES0047</inboundRoutingId>
         <ICDTDirectoryStructure>
-            <inputDirectory>/home/ubuntu/data/icdt/input</inputDirectory>
-            <errorDirectory>/home/ubuntu/data/icdt/error</errorDirectory>
-            <notificationsDirectory>/home/ubuntu/data/icdt/ntfn_ack</notificationsDirectory>
+            <inputDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\icdt\input</inputDirectory>
+            <errorDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\icdt\error</errorDirectory>
+            <notificationsDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\icdt\ntfn_ack</notificationsDirectory>
         </ICDTDirectoryStructure>
     </InboundConfig>
     <OutboundConfig>
         <enabled>true</enabled>
         <pushFrequency>1</pushFrequency>
-        <tempDirectory>/home/ubuntu/data/temp</tempDirectory>
-        <outputDirectory>/home/ubuntu/data/output</outputDirectory>
+        <tempDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\temp</tempDirectory>
+        <outputDirectory>C:\Users\sivaabhishek\eclipse-workspace\RCC\data\output</outputDirectory>
         <remoteOutboundDir>/ES0047_UPLOAD</remoteOutboundDir>
         <outboundRoutingId>ESMD2</outboundRoutingId>
         <outboundFilePrefix>ON</outboundFilePrefix>

@@ -1,73 +1,52 @@
-<!doctype html>
-<html lang="en">
-
+<html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>RC CLIENT APP</title>
+	<title>RC CLIENT APP</title>
 </head>
-
-<body>
-    <h1>WELCOME TO RC CLIENT APP DEMO!</h1>
-    <form id="my-form" >
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp" id="email" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <body>    
+       <h1>RCCLIENT APPLICATION</h1>
+        <div style="margin: 20px; margin-left: 40px">
+        <form action="http://localhost:8080/RCC/call/upload/" method="post" enctype="multipart/form-data">
+            <label>First Name</label>
+            <input type="text" name="firstName" value="Siva" placeholder="First Name">
+            <label>Last Name</label>
+            <input type="text" name="lastName" value="Abhishek" placeholder="Last Name">
+            <label>Address</label>
+            <input type="text"  name="address" value="101 asdasd3 11" placeholder="Address">
+            <label>City</label>
+            <input type="text" name="city"value="Tempe" placeholder="City">
+            <label>State</label>
+            <input type="text" name="state" value="Az" placeholder="State">
+            <label>Zipcode</label>
+            <input type="text" name="zipCode" value="12333" placeholder="Zipcode">
+            <label>Phone</label>
+            <input type="text" name="phone" value="4804800000" placeholder="Phone Number">
+            <label>Case ID</label>
+            <input type="text" name="caseID" value="12345" placeholder="Case ID">
+            <label>Letter Date</label>
+            <input type="date" name="letterDate" value="01-01-2019" placeholder="Letter Date">
+            <label>Program Name</label>
+            <input type="text" name="programName" value="esmd" placeholder="Program Name">
+            <label>HIPPS Code</label>
+            <input type="text" name="hippsCode" value="hips" placeholder="HIPPS Code">
+            <label>Claim ID</label>
+            <input type="text"  name="claimID" value="1234567890123" placeholder="Claim ID">
+            <label>Comments</label>
+            <input type="text" name="comments" value="comments...."  placeholder="Comments">
+            <label>Date of Birth</label>
+            <input type="date" name="dateOfBirth" value="01-01-1956" placeholder="Date of Birth">
+            <label>Date of Service</label>
+            <input type="date"  name="dateOfService" value="01-01-2019" placeholder="Date of Service">
+            <label>Subscriber ID</label>
+            <input type="text" name="subscriberID" value="1234567" placeholder="Subscriber ID">
+            <label>Procedure Code</label>
+            <input type="text" name="procedureCode" value="abcdef" placeholder="Procedure Code">
+            <label>Letter ID</label>
+            <input type="text"  name="letterID"  value="B7MH9DOFCBNDK68YVXOAFWXYD" placeholder="Letter ID">
+            <label>Upload File</label>
+            <input type="file" name="selectedFile">
+        	<input type="submit" value="Submit">
+        </form>
         </div>
-        <div class="row">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Name" id="name">
-            </div>
-        </div><br>
-        <button class="btn btn-primary">SUBMIT</button>
-    </form>
-	<div id="showresults">
-	</div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
- 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/JavaScript">
-    const url = "http://ec2-13-57-7-24.us-west-1.compute.amazonaws.com:8080/RCClient/rest/post";
-    $(document).ready(function(e){
-    	
-    	  $("button").click(function(event){
-    		// var email = document.getElementById("email").value;
-    		// var name = document.getElementById("name").value;
-    		 var data = JSON.stringify({
-    		        "email": $('#email').val(),
-    		        "name": $('#name').val()});
-    		 var req = $.ajax({
-    			  url:url,
-    			  type:"POST",
-    			  data:data,
-    			  contentType:"application/json",
-    			  dataType:"json",
-    			  success: function(data){
-    	      		//$("#response").html(JSON.stringify(data));
-    	      		var obj = JSON.parse(JSON.stringify(data));
-    	      		
-    	      		var str = "Hello "+obj.name +"! Your New ID is "+ obj.id;
-    	      		alert(str);
-    	    }});
-    		 req.done(function(data){
-    			 var obj = JSON.parse(JSON.stringify(data));
- 	      		
- 	      		var str = "Hello "+obj.name +"! Your New ID is "+ obj.id;
- 	      		$("#showresults").append(str);
-    		 });
-       	  event.preventDefault();
-    	  });
-    });
-    </script>
-</body>
-
+    </body>
 </html>
