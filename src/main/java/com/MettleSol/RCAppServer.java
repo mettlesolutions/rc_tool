@@ -47,7 +47,7 @@ public class RCAppServer
         rc.rcProcessor(form);
         
         //Build a response to return
-        return Response.status(200)
-            .entity("UploadFile is called, Uploaded file name : " + fileName +".  Running Standalone.").build();
+        String json = "{ \"name\":\"" + form.getFirstName() +" "+ form.getLastName() + "\", \"caseid\":\"" + form.getCaseID() + "\", \"claimID\":\"" + form.getClaimID() + "\", \"subscriberid\":\"" + form.getSubscriberID() + "\", \"letterid\":\"" + form.getLetterID() + "\", \"file-status\":\"uploaded\"}";
+  	  return Response.ok(json, "application/json").build();
     }
 }  
