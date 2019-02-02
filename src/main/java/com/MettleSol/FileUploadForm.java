@@ -5,17 +5,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.ws.rs.FormParam;
+
+import org.apache.commons.lang.RandomStringUtils;
 import org.jboss.resteasy.annotations.providers.multipart.PartType;
  
 public class FileUploadForm {
  
-    public FileUploadForm() {
-    }
- 
-    private byte[] fileData;
-    private String fileName = "upload.pdf";
+	private byte[] fileData;
+    private String fileName;
     private String firstName;
     private String lastName;
     private String address;
@@ -35,10 +35,27 @@ public class FileUploadForm {
     private String subscriberID;
     private String procedureCode;
     private String letterID;
-    
+	private String fileType;
+	
+	public FileUploadForm() {
+    }
     
     public String getFileName() {
         return fileName;
+    }    
+    
+    @FormParam("fileName")
+    public void setFileName(String fileName) {
+    	UUID uuid = UUID.randomUUID();
+    	this.fileName = uuid.toString();
+    }
+    public String getFileType() {
+    	return fileType;
+    }
+    
+	@FormParam("fileType")
+    public void setFileType(String fileType) {
+    	this.fileType = fileType.trim();
     }
     
     public byte[] getFileData() {
@@ -57,7 +74,7 @@ public class FileUploadForm {
 	
 	@FormParam("firstName")
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstName = firstName.trim();
 	}
 	
 	public String getLastName() {
@@ -66,7 +83,7 @@ public class FileUploadForm {
 	
 	@FormParam("lastName")
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastName = lastName.trim();
 	}
 	
 	public String getAddress() {
@@ -75,7 +92,7 @@ public class FileUploadForm {
 	
 	@FormParam("address")
 	public void setAddress(String address) {
-		this.address = address;
+		this.address = address.trim();
 	}
 
 	public String getCity() {
@@ -84,7 +101,7 @@ public class FileUploadForm {
 	
 	@FormParam("city")
 	public void setCity(String city) {
-		this.city = city;
+		this.city = city.trim();
 	}
 
 	public String getState() {
@@ -93,7 +110,7 @@ public class FileUploadForm {
 	
 	@FormParam("state")
 	public void setState(String state) {
-		this.state = state;
+		this.state = state.trim();
 	}
 	
 	public String getZipCode() {
@@ -102,7 +119,7 @@ public class FileUploadForm {
 	
 	@FormParam("zipCode")
 	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+		this.zipCode = zipCode.trim();
 	}
 
 	public String getPhone() {
@@ -111,7 +128,7 @@ public class FileUploadForm {
 	
 	@FormParam("phone")
 	public void setPhone(String phone) {
-		this.phone = phone;
+		this.phone = phone.trim();
 	}
 
 	public String getCaseID() {

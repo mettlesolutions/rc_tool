@@ -70,7 +70,7 @@ public class RCClientProcessor {
 		emdr.setCaseId(form.getCaseID());
 		emdr.setLetterDate(form.getLetterDate());
 		ArrayList<File> files = new ArrayList<File>();
-		files.add(new File("C:/Users/sivaabhishek/eclipse-workspace/RCC/"+form.getFileName()));
+		files.add(new File("C:/Users/sivaabhishek/eclipse-workspace/RCC/"+form.getFileName()+"."+form.getFileType()));
 		LetterDetails letterDetails = new LetterDetails();
 		letterDetails.setResponseDate(form.getResponseDate());
 		letterDetails.setResultsToBeDeliveredBy(2);
@@ -92,7 +92,7 @@ public class RCClientProcessor {
 	    emdr.setLetterId(form.getLetterID());
 		AttachmentDetails attachmentDetails = new AttachmentDetails();
 		ArrayList<String> attachmentInformation = new ArrayList();
-		attachmentInformation.add(form.getFileName());
+		attachmentInformation.add(form.getFileName()+"."+form.getFileType());
 		attachmentDetails.setAttachmentInformation(attachmentInformation);
 		emdr.setAttachmentDetails(attachmentDetails);
 		ProviderDetails pd = new ProviderDetails();
